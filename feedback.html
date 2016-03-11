@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title></title>
+	<style type="text/css">body  {
+    background-image: url('/Team2/images/team2 scene.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+	</style>
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<body></body>
+</html>
+<title></title>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet" /><!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+<link href="css/custom.css" rel="stylesheet" /><!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]--><!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container"><!-- Logo and responsive toggle -->
+<div class="navbar-header"><button class="navbar-toggle" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button></div>
+<!-- Navbar links -->
+
+<div class="collapse navbar-collapse" id="navbar">
+<ul class="nav navbar-nav navbar-right">
+	<li class="active"><a href="/Team2/index.html">Home</a></li>
+	<li><a href="#">Products</a></li>
+	<li class="dropdown"><a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">Services </a>
+	<ul aria-labelledby="about-us" class="dropdown-menu">
+		<li><a href="/Team2/Videospage.html">Videos</a></li>
+		<li><a href="/feedback.html">Feedback</a></li>
+		<li><a href="#">something</a></li>
+	</ul>
+	</li>
+	<li><a href="#">My Account</a></li>
+	<li><a href="#">My Cart</a></li>
+</ul>
+</div>
+<!-- /.navbar-collapse --></div>
+<!-- /.container --></nav>
+
+<form action="/cgi-bin/chfeedback.pl" method="post">
+<hr />
+<p><label for="tswname">Name</label> <input id="tswname" name="fullname" size="39" type="text" /><br />
+&nbsp;<br />
+<label for="tswemail">Email</label> <input id="tswemail" name="email" size="39" type="text" /><br />
+&nbsp;<br />
+<label for="tswcomments">Comments</label><br />
+&nbsp;<br />
+<textarea cols="45" id="tswcomments" name="comments" rows="10"></textarea></p>
+
+<p><strong><span style="font-size: 24px;">Feedback is Always Welcome!</span></strong><br />
+&nbsp;<br />
+<input type="submit" value="Send Feedback" /></p>
+</form>

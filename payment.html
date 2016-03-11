@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+     <!--Links to Javascript and Style Sheets-->
+    <script src="js/payment.js" type="text/javascript"></script>
+    <script src="js/cookies.js" type="text/javascript"></script>
+    <link href="css/boilerplate.css" rel="stylesheet">
+    <link href="css/payment.css" rel="stylesheet">
+    <meta charset="utf-8">
+
+    <title>Credit Card Order Form</title>
+</head>
+
+<body>
+  
+     <!--Company logo with hyperlink to home page and navigational menu-->
+    <div class="primaryContainer clearfix" id="primaryContainer">
+        <a href="main.html"><img class="image" id="image" src=
+        "img/capnclappy.png" alt="Company Logo"></a></div>
+
+        <div class="clearfix" id="box"></div>
+
+        <nav>
+            <div id="menubar">
+                <ul id="nav">
+                    <li>
+                        <a href="main.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="second.html">More Stuff</a>
+                    </li>
+
+                    <li>
+                        <a href="third.html">Even More Stuff!</a>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">Shopping Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+    
+    <br><br><br>
+    
+     <!--Validation form with required parameters for credit card, user billing and shipping info. All fields except phone are required.
+User can click in checkbox if shipping is same as billing and it will fill with info. In addition, cookies from previous page
+for zip code and email will fill boxes when user clicks in them-->
+    
+    <form action="thanks.html" id="myForm" method="post" name="myForm"
+    onsubmit="return validateForm();">
+        <h1>Credit Card Order Form</h1>
+
+        <table style="width:30%; margin:auto">
+            <tr>
+                <td>Credit Card Number</td>
+
+                <td><input class="input" pattern=".{4,}" maxlength="4" name="AccountNumber" onkeypress=
+                'return maxLength(this,"4");' onkeyup="checkInput(this)" size=
+                "4" type="text">
+                    
+                    <input class="input" pattern=".{4,}" maxlength="4" name="AccountNumber2"
+                onkeypress='return maxLength(this,"4");' onkeyup=
+                "checkInput(this)" size="4" type="text">
+                    
+                    <input class="input" pattern=".{4,}" maxlength="4"
+                name="AccountNumber3" onkeypress='return maxLength(this,"4");'
+                onkeyup="checkInput(this)" size="4" type=
+                "text">
+                    
+                    <input class="input" pattern=".{4,}" maxlength="4" name="AccountNumber4" onkeypress=
+                'return maxLength(this,"4");' onkeyup="checkInput(this)" size=
+                "4" type="text"></td>
+            </tr>
+       
+            <tr>
+                <td>Expiration Date (mm yy)</td>
+
+                <td><input class="input" pattern=".{2,}" maxlength="2" name="ExpMonth" onkeypress=
+                'return maxLength(this,"2");' onkeyup="checkInput(this)" size=
+                "2" type="text">
+                    
+                    <input id="input6" pattern=".{2,}" maxlength="2" name="ExpYear"
+                onkeypress='return maxLength(this,"2");' onkeyup=
+                "checkInput(this)" size="2" type="text"></td>
+            </tr>
+
+            <tr>
+                <td>AVS (3 digit code on back)</td>
+
+                <td><input class="input" pattern=".{3,}" maxlength="3" name="AVS" onkeypress=
+                'return maxLength(this,"3");' onkeyup="checkInput(this)" size=
+                "3" type="text"></td>
+            </tr>
+        </table>
+
+        <blockquote>
+            <br>
+
+            <h2>Billing Address</h2>
+        </blockquote>
+
+        <blockquote>
+            <table style="width:26%; margin:auto">
+                <tr>
+                    <td>Name</td>
+
+                    <td><input name="Contact_FullName" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td>Street address</td>
+
+                    <td><input name="Contact_StreetAddress" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td>Address (cont.)</td>
+
+                    <td><input name="Contact_Address2" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td>City/Town</td>
+
+                    <td><input name="Contact_City" size="35" type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>State</td>
+
+                    <td><input name="Contact_State" size="35" type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>Zip</td>
+
+                    <td><input pattern=".{5,}" onblur="setValue(this)" onfocus=
+            "getValue(this)" maxlength="5" name="zip" onkeypress=
+                'return maxLength(this,"5");' onkeyup="checkInput(this)" size="5"
+                    type="text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Phone</em></td>
+
+                    <td><input pattern=".{10,}" maxlength="25" name="Contact_Phone" size="25"
+                    type="text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>E-mail</em></td>
+
+                    <td><input name="email" onblur="setValue(this)" onfocus=
+            "getValue(this)" size="25" type="text"></td>
+                </tr>
+            </table>
+        </blockquote>
+
+        <blockquote>
+            <h2>Shipping Address&nbsp;</h2>
+
+            <h4>Check the box if shipping address is the same as billing
+            address</h4><input class= "input2" name="billingtoo" onclick=
+            "FillBilling(this.form)" type="checkbox">
+        </blockquote>
+
+        <blockquote>
+            <table style="width:26%; margin:auto">
+                <tr>
+                    <td><em>Name</em></td>
+
+                    <td><input name="SContact_FullName" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Street address</em></td>
+
+                    <td><input name="SContact_StreetAddress" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Address (cont.)</em></td>
+
+                    <td><input name="SContact_Address2" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>City/Town</em></td>
+
+                    <td><input name="SContact_City" size="35" type="text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>State</em></td>
+
+                    <td><input name="SContact_State" size="35" type=
+                    "text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Zip</em></td>
+
+                    <td><input pattern=".{5,}" maxlength="5" name="Szip" onkeypress=
+                'return maxLength(this,"5");' onkeyup="checkInput(this)" size="5"
+                    type="text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Phone</em></td>
+
+                    <td><input pattern=".{10,}" maxlength="25" name="SContact_HomePhone" size=
+                    "25" type="text"></td>
+                </tr>
+
+                <tr>
+                    <td><em>Email</em></td>
+
+                    <td><input name="Semail" onblur="setValue(this)" onfocus=
+            "getValue(this)" size="25" type=
+                    "text"></td>
+                </tr>
+            </table>
+        </blockquote>
+        <input type="submit" value="Submit Order"><br>
+        <br>
+        <input type="reset" value="Clear Form">
+    </form>
+       
+    <!--Footer including links to other pages and company address--> 
+    
+    <footer>
+        <a href="main.html">Home</a> | <a href="second.html">More Stuff</a> |
+        <a href="third.html">Even More Stuff!</a> | <a href=
+        "cart.html">Shopping Cart</a><br>
+
+        <address>
+            Cap'n Clappy's Curious Collectibles &bull; 745 Skunks Misery Rd
+            &bull; Locust Valley, NY 11560
+        </address>
+    </footer>    
+        
+</body>
+</html>
